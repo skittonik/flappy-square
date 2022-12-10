@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfp4llbtg1crt"]
+
+[ext_resource type="Script" path="res://world/wall.gd" id="1_hcokr"]
+[ext_resource type="Texture2D" uid="uid://brrlvdq0ca21d" path="res://common/square_16x16.png" id="2_u1l5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy64i"]
+size = Vector2(16, 104)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8orn3"]
+polygon = PackedVector2Array(-8, -104, -8, 0, 8, 0, 8, -104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw36h"]
+size = Vector2(9.6, 41.6)
+
+[node name="Wall" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_hcokr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="UpperSprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(0, -74.4)
+scale = Vector2(1, 6.5)
+texture = ExtResource("2_u1l5l")
+
+[node name="UpperCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -74.4)
+shape = SubResource("RectangleShape2D_sy64i")
+
+[node name="UpperLightOccluder2D" type="LightOccluder2D" parent="Area2D"]
+position = Vector2(0, -22.4)
+occluder = SubResource("OccluderPolygon2D_8orn3")
+
+[node name="LowerSprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(0, 74.4)
+scale = Vector2(1, 6.5)
+texture = ExtResource("2_u1l5l")
+
+[node name="LowerCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 74.4)
+shape = SubResource("RectangleShape2D_sy64i")
+
+[node name="LowerLightOccluder2D" type="LightOccluder2D" parent="Area2D"]
+position = Vector2(0, 126.4)
+occluder = SubResource("OccluderPolygon2D_8orn3")
+
+[node name="PointArea2D" type="Area2D" parent="Area2D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/PointArea2D"]
+position = Vector2(0, -9.53674e-08)
+shape = SubResource("RectangleShape2D_pw36h")

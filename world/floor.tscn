@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ixofiihepv6f"]
+
+[ext_resource type="Script" path="res://world/floor.gd" id="1_x4uw6"]
+[ext_resource type="Texture2D" uid="uid://brrlvdq0ca21d" path="res://common/square_16x16.png" id="2_ht32b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbwl1"]
+size = Vector2(16, 14.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwa3r"]
+size = Vector2(16, 16)
+
+[node name="Floor" type="StaticBody2D"]
+position = Vector2(640, 672)
+scale = Vector2(80, 6)
+script = ExtResource("1_x4uw6")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.490196, 0.988235, 0.384314, 1)
+texture = ExtResource("2_ht32b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.611765, 0.0509804, 1)
+position = Vector2(0, -6)
+scale = Vector2(1, 0.25)
+texture = ExtResource("2_ht32b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.666672)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sbwl1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vwa3r")

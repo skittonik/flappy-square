@@ -1,0 +1,5 @@
+res://game.tscn
+res://player/player.gd
+res://player/player.tscn
+res://world/wall.gd
+res://world/wall.tscn

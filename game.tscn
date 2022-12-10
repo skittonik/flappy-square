@@ -1,0 +1,165 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0wj4msbj73o7"]
+
+[ext_resource type="PackedScene" uid="uid://ccjdcciixyft8" path="res://player/player.tscn" id="1_ohpwy"]
+[ext_resource type="Script" path="res://game.gd" id="1_vrtn4"]
+[ext_resource type="PackedScene" uid="uid://bfp4llbtg1crt" path="res://world/wall.tscn" id="2_t6jd2"]
+[ext_resource type="PackedScene" uid="uid://ixofiihepv6f" path="res://world/floor.tscn" id="3_5h2vg"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_vrtn4")
+metadata/_edit_horizontal_guides_ = [360.0, 312.0]
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45098, 0.819608, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+current = true
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("2_t6jd2")]
+position = Vector2(1320, 312)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("2_t6jd2")]
+position = Vector2(1656, 312)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("2_t6jd2")]
+position = Vector2(1992, 312)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("2_t6jd2")]
+position = Vector2(2328, 312)
+
+[node name="Player" parent="." instance=ExtResource("1_ohpwy")]
+position = Vector2(384, 312)
+
+[node name="Floors" type="Node" parent="."]
+
+[node name="Floor" parent="Floors" instance=ExtResource("3_5h2vg")]
+
+[node name="Floor2" parent="Floors" instance=ExtResource("3_5h2vg")]
+position = Vector2(1920, 672)
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ScoreLabel" type="Label" parent="GUI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 63.0
+offset_bottom = 144.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.184314, 0.203922, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0823529, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "221"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreBoard" type="Panel" parent="GUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -184.0
+offset_right = 120.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreTitle" type="Label" parent="GUI/ScoreBoard"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 16.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.184314, 0.203922, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0823529, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="GUI/ScoreBoard"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 64.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.184314, 0.203922, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0823529, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScoreTitle" type="Label" parent="GUI/ScoreBoard"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 136.0
+offset_bottom = 184.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.184314, 0.203922, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0823529, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "BEST SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScoreLabel" type="Label" parent="GUI/ScoreBoard"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 184.0
+offset_bottom = 232.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.184314, 0.203922, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0823529, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="GUI/ScoreBoard"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 64.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[editable path="Player"]
